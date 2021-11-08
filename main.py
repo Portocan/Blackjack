@@ -1,11 +1,29 @@
-import random
 import itertools
+import random
 
-
-# establishing cards
 class Deck:
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
-    values = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
+    values = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King",
+              "Ace"]
+
+    def __init__(self):
+        self.cards = []
+
+# actual deck creation using Card class
+    @property
+    def createdeck(self):
+        for suit, value in itertools.product(self.suits, self.values):
+            self.cards.append(Card(suit, value))
+        return self.cards
+
+    def shuffledeck(self):
+        self.cards = random.sample(self.cards, len(self.cards))
+        return self.cards
+
+    def cleardeck(self):
+        self.cards = []
+        return self.cards
+
 
 class Card:
 
@@ -13,6 +31,7 @@ class Card:
         self.suit = suit
         self.value = value
 
+    # card print statement
     def __str__(self):
         return self.value + " of " + self.suit
 
@@ -25,4 +44,4 @@ class Card:
         if self.value == "Ace":
             return 1
 
-
+#testing area
