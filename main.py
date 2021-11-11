@@ -17,7 +17,7 @@ class Deck:
         return self.cards
 
     def shuffledeck(self):
-        self.cards = random.sample(self.cards, len(self.cards))
+        random.shuffle(self.cards)
         return self.cards
 
     def cleardeck(self):
@@ -44,4 +44,28 @@ class Card:
         if self.value == "Ace":
             return 1
 
+class Player:
+
+    def __init__(self, hand):
+        self.hand = []
+
+    def reset(self):
+        self.hand = []
+
+    def loadhand(self):
+        print("Players Hand:")
+
+class Game:
+        def __init__(self):
+            self.deck = []
+
+        def play(self):
+            self.deck = Deck()
+            self.deck.createdeck()
+
+
+
 #testing area
+game = Game()
+game.play()
+
